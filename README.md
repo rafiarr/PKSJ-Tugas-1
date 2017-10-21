@@ -8,14 +8,15 @@
 >
 > *Semoga bermanfaat!*
 
-##Daftar Isi
+## Daftar Isi
 
 - [Dasar Teori](#dasar-teori)
 - [Instalasi Aplikasi](#instalasi-aplikasi)
-    -[Server](#instalasi-server)
-    -[Penetrator](#instalasi-penetrator)
-    -[SSH Server](#instalasi-ssh-sever)
+    - [Server](#instalasi-server)
+    - [Penetrator](#instalasi-penetrator)
+    - [SSH Server](#instalasi-ssh-sever)
 - [Eksperimen](#uji-penetrasi)
+
 
 ### Pendahuluan
 
@@ -62,11 +63,42 @@ Di bawah ini akan dijelaskan bagaimana melakukan eksperimen dengan pertama-tama 
 * Persiapkan bootable USB. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
 * [Tahapan Instalasi OS Kali Linux]
 
+Selanjutnya akan dijelaskan langkah-langkah menginstall aplikasi yang digunakan untuk Penetration Testing.
 
+#### Instalasi Hydra
+
+Untuk melakukan instalasi Hydra, cukup download file tar.gz yang dibutuhkan dan lakukan ekstraksi seperti biasa.
+
+```bash
+wget https://nmap.org/ncrack/dist/ncrack-0.5.tar.gz
+./configure
+make
+make install
+```
+
+#### Instalasi NCrack
+
+Untuk melakukan instalasi NCrack, cukup download file tar.gz yang dibutuhkan dan lakukan ekstraksi seperti biasa.
+
+```bash
+wget http://freeworld.thc.org/releases/hydra-6.3-src.tar.gz
+./configure
+make
+make install
+```
+
+#### Instalasi Medusa
+
+Untuk melakukan instalasi Medusa, cukup download file tar.gz yang dibutuhkan dan lakukan ekstraksi seperti biasa.
+
+```bash
+wget http://www.foofus.net/jmk/tools/medusa-2.0.tar.gz
+./configure
+make
+make install
+```
 
 ### Instalasi SSH Server
-
-
 
 + Untuk menginstall aplikasi OpenSSH server dan aplikasi yang terkait, jalankan kode:
 
@@ -98,6 +130,19 @@ Port 22
 
 
 ### Uji Penetrasi
+
+Uji Penetrasi kali ini dibagi menjadi 3, yaitu menggunakan Hydra, NCrack, dan Medusa.
+
+Untuk melakukan Penetration Test menggunakan *Automated Tools* dibawah ini, beberapa bisa melakukan attempt untuk 1 password, namun kali ini kami menggunakan password list yang tersimpan pada file `.txt`.
+
+File yang kami gunakan ada 2:
+
+* File yang berisi 10 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist10.txt).
+* File yang berisi 1000 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist.txt).
+
+#### Uji Penetrasi Menggunkan Hydra
+#### Uji Penetrasi Menggunkan NCrack
+#### Uji Penetrasi Menggunkan Medusa
 
 
 
