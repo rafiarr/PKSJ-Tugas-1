@@ -1,4 +1,14 @@
-# PKSJ-Tugas-1
+# PKSJ PERANCANGAN KEAMANAN SISTEM DAN JARINGAN
+
+## TUGAS 1
+
+### Pendahuluan
+
+
+### Dasar Teori
+
+###
+
 
 ## A. Instalasi Ubuntu Server
 * Download file instalasi [ubuntu server](https://"linkubuntuserver"). Pada percobaan kami, kami mengguanakan ubuntu server 16.04.

