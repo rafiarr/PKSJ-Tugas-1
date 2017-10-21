@@ -12,24 +12,40 @@
 
 - [Dasar Teori](#dasar-teori)
 - [Instalasi Aplikasi](#instalasi-aplikasi)
-    -[Ubuntu Server](#ubuntu-server)
-    -[]
+    -[Server](#instalasi-server)
+    -[Penetrator](#instalasi-penetrator)
+    -[SSH Server](#instalasi-ssh-sever)
 - [Eksperimen](#uji-penetrasi)
-
-
-## TUGAS 1
 
 ### Pendahuluan
 
 
 ### Dasar Teori
 
-1. 
 
-###
+#### Computer Security
+
+Computer Security, yang biasa dikenal juga sebagai Cyber Security dan/atau IT Security, adalah perlindungan pada sebuah sistem komputer dari pencurian atau kerusakan pada hardware, software, maupun informasi yang dimiliki, serta menghindari adanya gangguan ataupun alih-fungsi pada service yang tersedia.
 
 
-## A. Instalasi Ubuntu Server
+#### Penetration Testing
+
+Penetration Testing adalah metode untuk mengevaluasi keamanan sistem komputer atau jaringan dengan mensimulasikan serangan dari sumber yang berbahaya. Proses ini melibatkan analisis aktif terhadap sistem untuk setiap kerentanan potensial yang diakibatkan oleh sistem yang lemah atau konfigurasi sistem yang tidak benar atau kelemahan operasional dalam proses teknis. Masalah keamanan yang ditemukan akan disampaikan kepada pemilik sistem bersama dengan penilaian dampak dan mitigasi (solusi teknis) dari setiap kerentanan yang ditemukan.
+Tujuan Penetration Testing diantaranya adalah untuk menentukan dan mengetahui serangan-serangan yang bisa terjadi terhadap kerentanan yang ada pada sistem, mengetahui dampak bisnis yang diakibatkan dari hasil ekpoitasi yang dilakukan oleh penyerang. Penetration Testing adalah salah satu komponen penting dari *Security Measures*.
+
+
+### Vulnerabilities
+
+Proses dari Penetration Testing dibagi menjadi 2:
+1. Vulnerabilites Discovery - Operasi-operasi yang seharusnya berjalan normal, yang mana tester dapat melakukan uji coba melakukan kegiatan yang dianggap tidak sesuai.
+2. Vulnerabilities Exploitation - Operasi-operasi ilegal yang dilakukan dan berjalan lancar akan dijadikan sasaran penyerangan
+
+
+##Instalasi Aplikasi
+
+Di bawah ini akan dijelaskan bagaimana melakukan eksperimen dengan pertama-tama melakukan instalasi aplikasi yang dibutuhkan.
+
+### Instalasi Server
 * Pada eksperimen kali ini kita menggunakan [Ubuntu Server](https://www.ubuntu.com/download/server?).
 * Download Ubuntu Server. Pada percobaan kami, kami memilih Ubuntu Server 16.04.
 * Persiapkan Bootable USB untuk melakukan instalasi. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
@@ -41,12 +57,14 @@
 
 
 
-## B. Instalasi Penetrator (OS dan Aplikasi yang digunakan)
+### Instalasi Penetrator
 * Download file instalasi [Kali Linux](https://"linkkali"). Pada percobaan kami, kami mengguanakan kali sebagai OS untuk penetrasi.
 * Persiapkan bootable USB. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
-* [Tahapan Instalasi OS Penetrator]
+* [Tahapan Instalasi OS Kali Linux]
 
-## C. Instalasi SSH Server
+
+
+### Instalasi SSH Server
 
 
 
@@ -79,7 +97,7 @@ Port 22
 
 
 
-## Uji Penetrasi
+### Uji Penetrasi
 
 
 
