@@ -1,0 +1,7 @@
+# Ncrack 0.5 scan initiated Sat Oct 21 04:16:34 2017 as: ncrack -v --user nafiar -P wordlist.txt -oN hasilNcrack2000line.txt ssh://10.151.34.43 
+Discovered credentials on ssh://10.151.34.43:22 'nafiar' 'guenafiar'
+Discovered credentials for ssh on 10.151.34.43 22/tcp:
+10.151.34.43 22/tcp ssh: 'nafiar' 'guenafiar'
+
+# Ncrack done at Sat Oct 21 04:21:22 2017 -- 1 service scanned in 288.00 seconds.
+Probes sent: 531 | timed-out: 0 | prematurely-closed: 194

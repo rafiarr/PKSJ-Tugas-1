@@ -1,0 +1,4 @@
+Starting Ncrack 0.5 ( http://ncrack.org ) at 2017-10-21 04:13 UTC
+
+Discovered credentials on ssh://10.151.34.43:22 'nafiar' 'guenafiar'
+
