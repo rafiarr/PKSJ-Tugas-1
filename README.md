@@ -14,7 +14,7 @@
 - [Instalasi Aplikasi](#instalasi-aplikasi)
     -[Ubuntu Server](#ubuntu-server)
     -[]
-- [Eksperimen]()
+- [Eksperimen](#uji-penetrasi)
 
 
 ## TUGAS 1
@@ -30,7 +30,8 @@
 
 
 ## A. Instalasi Ubuntu Server
-* Download [Ubuntu Server](https://"linkubuntuserver"). Pada percobaan kami, kami mengguanakan ubuntu server 16.04.
+* Pada eksperimen kali ini kita menggunakan [Ubuntu Server](https://www.ubuntu.com/download/server?).
+* Download Ubuntu Server. Pada percobaan kami, kami memilih Ubuntu Server 16.04.
 * Persiapkan Bootable USB untuk melakukan instalasi. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
 * Pada saat komputer melakukan booting pilih media USB dimana OS Ubuntu Server diletakkan. Pilih bahasa dan Enter.
 * Selanjutnya pilih **Install Ubuntu Server**.
@@ -39,10 +40,11 @@
 
 
 
-## B. Instalasi OS Penetrator
+
+## B. Instalasi Penetrator (OS dan Aplikasi yang digunakan)
 * Download file instalasi [Kali Linux](https://"linkkali"). Pada percobaan kami, kami mengguanakan kali sebagai OS untuk penetrasi.
 * Persiapkan bootable USB. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
-* Tahapan2 instalasi
+* [Tahapan Instalasi OS Penetrator]
 
 ## C. Instalasi SSH Server
 
@@ -78,5 +80,7 @@ Port 22
 
 
 ## D. Uji Penetrasi
+
+
 
 
