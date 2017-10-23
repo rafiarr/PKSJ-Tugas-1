@@ -64,7 +64,7 @@ Di bawah ini akan dijelaskan bagaimana melakukan eksperimen dengan pertama-tama 
 ### Instalasi Penetrator
 * Download file instalasi [Kali Linux](https://"linkkali"). Pada percobaan kami, kami mengguanakan kali sebagai OS untuk penetrasi.
 * Persiapkan bootable USB. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
-* [Tahapan Instalasi OS Kali Linux]
+* Lakukan reboot dan masuk ke bios dengan menekan tombol F2
 
 Selanjutnya akan dijelaskan langkah-langkah menginstall aplikasi yang digunakan untuk Penetration Testing.
 

