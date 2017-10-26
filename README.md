@@ -62,11 +62,23 @@ Di bawah ini akan dijelaskan bagaimana melakukan eksperimen dengan pertama-tama 
 
 
 ### Instalasi Penetrator
-* Download file instalasi [Kali Linux](https://"linkkali"). Pada percobaan kami, kami mengguanakan kali sebagai OS untuk penetrasi.
+* Download file instalasi [Kali Linux](https://www.kali.org/downloads/). Pada percobaan kami, kami mengguanakan kali sebagai OS untuk penetrasi.
 * Persiapkan bootable USB. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
 * Lakukan reboot dan masuk ke bios dengan menekan tombol F2
+* Kemudian atur urutan pilihan perangkat yang akan digunakan untuk melakukan boot. Dalam hal ini, pilihlah flashdisk yang telah dipersiapkan. Kemudian tekan F10 untuk menyimpan dan melanjutkan proses instalasi.
+* Ketika halaman boot kali muncul, pilih instalasi kali.
+* Atur bahasa yang akan digunakan.
+* Pilih negara tempat kita berada sekarang. Beberapa pilihan negara telah tersedia untuk langsung dipilih. Namun untuk Indonesia, harus memilih `other` > `Asia` > `Indonesia`.
+* Atur country country base setting ke `United States - en_US.UTF-8`.
+* Atur keymap yang digunakan menjadi `American English`.
+* Tentukan hostname dan domain yang akan digunakan. Domain bisa dikosongkan jika tidak diperlukan.
+* Tentukan password yang akan digunakan.
+* Pilih zona waktu yang digunakan. Kami memilih untuk menggunakan `Central (Sulawesi, Bali, Nusa Tenggara, East and South Kalimantan)`.
+* Mengatur partisi yang akan digunakan. Pilih `manual` agar bisa mengatur partisi sesuai keinginan. Kemudian pilih partisi yang akan digunakan. Agar mudah, pilih `Use entire disk`, kemudian pilih konfigurasi otomatis.
+* Pilih `All file in one partition`.
+* Pilih `finish partitioning and write changes to disk` untuk menyelesaikan pengaturan partisi.
 
-Selanjutnya akan dijelaskan langkah-langkah menginstall aplikasi yang digunakan untuk Penetration Testing.
+Dalam Kali, ada banyak sekali aplikasi untuk melakukan penyerangan yang telah terinstall. Namun kami akan tetap memberikan cara untuk melakukan instalasi aplikasi yang digunakan dalam pengujian ini. Langkah-langkah menginstall aplikasi yang digunakan untuk Penetration Testing.
 
 #### Instalasi Hydra
 
@@ -134,20 +146,22 @@ Port 22
 
 ### Uji Penetrasi
 
-Uji Penetrasi kali ini dibagi menjadi 3, yaitu menggunakan Hydra, NCrack, dan Medusa.
+#### Uji Penetrasi 1
 
-Untuk melakukan Penetration Test menggunakan *Automated Tools* dibawah ini, beberapa bisa melakukan attempt untuk 1 password, namun kali ini kami menggunakan password list yang tersimpan pada file `.txt`.
+Uji penetrasi 1 ini akan dilakukan dengan 3 aplikasi brute force attack yaitu Hydra, Ncrack, dan Medusa. Target yang akan digunakan adalah sebuah komputer dengan sistem operasi Ubuntu Server. Konfigurasi SSH yang digunakan adalah konfigurasi default. Berikut adalah percobaan yang telah kami lakukan.
+
+Dalam melakukan penetration test ini, kita bisa menggunakan sebuah password yang ingin ditebak, sebuah dictionary password, ataupun men-generate semua kemungkinan password yang bisa digunakan. Namun jika melakukan generate semua kemungkinan password, akan sangat banyak sekali percobaan yang akan dilakukan serta akan menghabiskan waktu yang sangat lama. Oleh karena itu, kami menggunakan dictionary password yang telah kami buat sebelumnya dengan menggunakan Crunch ditambah sebuah password yang benar didalamnya.
 
 File yang kami gunakan ada 2:
 
 * File yang berisi 10 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist10.txt).
 * File yang berisi 1000 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist.txt).
 
-Selain itu, uji penetrasi digunakan pada sistem yang tidak terproteksi untuk automated tools dan sistem yang terproteksi menggunakan [Fail2Ban](https://www.fail2ban.org/wiki/index.php/Main_Page).
+//Selain itu, uji penetrasi digunakan pada sistem yang tidak terproteksi untuk automated tools dan sistem yang terproteksi menggunakan [Fail2Ban](https://www.fail2ban.org/wiki/index.php/Main_Page).
 
-#### Uji Penetrasi Menggunkan Hydra
+##### Uji Penetrasi Menggunkan Hydra
 
-Untuk menjalankan eksekusi pada Hydra, cukup jalankan command di bawah ini:
+Buka terminal kemudian jalankan command berikut ini. (sambung)
 
 ```bash
 hydra -l nafiar -P /root/wordlist.txt -t 64 10.151.34.43 ssh
