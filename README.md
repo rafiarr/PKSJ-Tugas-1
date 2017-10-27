@@ -52,7 +52,7 @@ Di bawah ini akan dijelaskan bagaimana melakukan eksperimen dengan pertama-tama 
 ### Instalasi Server
 * Pada eksperimen kali ini kita menggunakan [Ubuntu Server](https://www.ubuntu.com/download/server?).
 * Download Ubuntu Server. Pada percobaan kami, kami memilih Ubuntu Server 16.04.
-* Persiapkan Bootable USB untuk melakukan instalasi. Pada percobaan kami, kami menggunakan [Rufus](https://"linkrufus").
+* Persiapkan Bootable USB untuk melakukan instalasi. Pada percobaan kami, kami menggunakan [Rufus](https://rufus.akeo.ie/).
 * Pada saat komputer melakukan booting pilih media USB dimana OS Ubuntu Server diletakkan. Pilih bahasa dan Enter.
 * Selanjutnya pilih **Install Ubuntu Server**.
 * Pilih bahasa yang hendak digunakan pada saat proses instalasi dan bahasa yang akan digunakan sebagai bahasa default OS.
@@ -152,22 +152,22 @@ Uji penetrasi 1 ini akan dilakukan dengan 3 aplikasi brute force attack yaitu Hy
 
 Dalam melakukan penetration test ini, kita bisa menggunakan sebuah password yang ingin ditebak, sebuah dictionary password, ataupun men-generate semua kemungkinan password yang bisa digunakan. Namun jika melakukan generate semua kemungkinan password, akan sangat banyak sekali percobaan yang akan dilakukan serta akan menghabiskan waktu yang sangat lama. Oleh karena itu, kami menggunakan dictionary password yang telah kami buat sebelumnya dengan menggunakan Crunch ditambah sebuah password yang benar didalamnya.
 
-File yang kami gunakan ada 2:
+//File yang kami gunakan ada 2:
 
-* File yang berisi 10 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist10.txt).
-* File yang berisi 1000 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist.txt).
+//* File yang berisi 10 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist10.txt).
+//* File yang berisi 1000 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist.txt).
 
 //Selain itu, uji penetrasi digunakan pada sistem yang tidak terproteksi untuk automated tools dan sistem yang terproteksi menggunakan [Fail2Ban](https://www.fail2ban.org/wiki/index.php/Main_Page).
 
 ##### Uji Penetrasi Menggunkan Hydra
 
-Buka terminal kemudian jalankan command berikut ini. (sambung)
+Hydra memungkinkan kita untuk mengatur jumlah task yang akan digunakan ketika melakukan brute force. Semakin banyak task akan semakin cepat, namun jumlah task yang bisa dijalankan sangat tergantung pada kecepatan internet dan setting SSH yang digunakan. Kami mencoba untuk melakukan beberapa test dengan jumlah dictionary yang berbeda-beda. Pertama, kami akan mencoba menebak dengan hanya 5 daftar kata di dictionary. Buka terminal kemudian jalankan command berikut ini.
 
 ```bash
-hydra -l nafiar -P /root/wordlist.txt -t 64 10.151.34.43 ssh
+hydra -l rafiar -P /root/wordlist.txt -t 5 10.151.32.131 ssh
 ```
 
-Log hasil eksekusi dari command tersebut pada file berisi 5 baris ditambah password asli:
+Log hasil eksekusi dari command tersebut pada file berisi 5 menggunakan baris ditambah password asli:
 
 ```bash
 Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
@@ -183,7 +183,11 @@ Hydra (http://www.thc.org/thc-hydra) finished at 2017-10-20 08:40:14
 <finished>
 ```
 
-Lama eksekusi hingga menemukan password: 13 detik.
+Lama eksekusi hingga menemukan password: 13 detik. Password ditemukan dengan cepat dan lancar. Kemudian kami mencoba menggunakan dictionary yang terdiri dari 100 baris kata dan melakukan brute force dengan 64 task.
+
+```bash
+hydra -l rafiar -P /root/wordlist.txt -t 64 10.151.32.131 ssh
+```
 
 Log hasil eksekusi dari command tersebut pada file berisi 100 baris ditambah password asli:
 
@@ -205,7 +209,11 @@ Hydra (http://www.thc.org/thc-hydra) finished at 2017-10-20 08:24:05
 [ERROR] 64 targets did not complete
 ```
 
-Lama eksekusi hingga menemukan password: 15 detik.
+Lama eksekusi hingga menemukan password: 15 detik. Jumlah task yang berhasil digunakan hanya sebanyak 28 task dari total 64 task yang telah ditentukan. Untuk berkutnya, kami mencoba 2000 baris dictionary dengan jumlah task 64.
+
+```bash
+hydra -l rafiar -P /root/wordlist.txt -t 64 10.151.32.131 ssh
+```
 
 Log hasil eksekusi dari command tersebut pada file berisi 2000 baris ditambah password asli:
 
@@ -232,7 +240,7 @@ Hydra (http://www.thc.org/thc-hydra) finished at 2017-10-20 08:35:17
 
 Lama eksekusi hingga menemukan password: 129 detik.
 
-#### Uji Penetrasi Menggunkan NCrack
+##### Uji Penetrasi Menggunkan NCrack
 
 Untuk menjalankan eksekusi pada NCrack, cukup jalankan command di bawah ini:
 
